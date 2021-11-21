@@ -85,6 +85,18 @@ def inorderStack(root):
             print(current.data)
             current = current.right
 
+def levelorder(root):
+    queue = [root]
+    
+    while queue:
+        current = queue.pop(0)
+        print(current.data)
+
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
+
 tree = BinarySearchTree()
 tree.insert(10)
 tree.insert(3)
@@ -105,6 +117,9 @@ print("PREORDER STACK:")
 preorderStack(tree.root)
 print("INORDER STACK:")
 inorderStack(tree.root)
+
+print("LEVEL ORDER:")
+levelorder(tree.root)
 
 
 
