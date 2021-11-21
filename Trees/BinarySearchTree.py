@@ -60,6 +60,31 @@ def postorder(root):
     postorder(root.right) 
     print(root.data)
 
+def preorderStack(root):
+    stack = [root]
+
+    while stack:
+        current = stack.pop()
+    
+        print(current.data)
+        if current.right: 
+            stack.append(current.right)
+        if current.left: 
+            stack.append(current.left)
+
+def inorderStack(root):
+    stack = []
+    current = root
+
+    while stack or current:
+        if current: 
+            stack.append(current)
+            current = current.left
+        else:
+            current = stack.pop()
+            print(current.data)
+            current = current.right
+
 tree = BinarySearchTree()
 tree.insert(10)
 tree.insert(3)
@@ -69,11 +94,18 @@ tree.insert(18)
 tree.insert(12)
 tree.insert(20)
 
-print("PREORDER: ")
+print("PREORDER RECURSIVE:")
 preorder(tree.root)
-print("INORDER: ")
+print("INORDER RECURSIVE:")
 inorder(tree.root)
-print("POSTORDER: ")
+print("POSTORDER RECURSIVE:")
 postorder(tree.root)
+
+print("PREORDER STACK:")
+preorderStack(tree.root)
+print("INORDER STACK:")
+inorderStack(tree.root)
+
+
 
 
