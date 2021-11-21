@@ -31,7 +31,6 @@ class BinarySearchTree:
                     # data == current.data
                     break
 
-
 def preorder(root):
     # root, left, right
     if root == None:
@@ -85,6 +84,31 @@ def inorderStack(root):
             print(current.data)
             current = current.right
 
+def levelorder(root):
+    queue = [root]
+    
+    while queue:
+        current = queue.pop(0)
+        print(current.data)
+
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
+
+def search(root, value):
+    if root == None:
+        print("Not found")
+        return -1
+
+    if value == root.data:
+        return root.data
+    
+    if value < root.data:
+        return search(root.left, value)
+    else:
+        return search(root.right, value)
+
 tree = BinarySearchTree()
 tree.insert(10)
 tree.insert(3)
@@ -105,6 +129,11 @@ print("PREORDER STACK:")
 preorderStack(tree.root)
 print("INORDER STACK:")
 inorderStack(tree.root)
+
+print("LEVEL ORDER:")
+levelorder(tree.root)
+
+print(search(tree.root, 5))
 
 
 
