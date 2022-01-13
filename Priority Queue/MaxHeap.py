@@ -15,15 +15,11 @@ class MaxHeap:
     def getMax(self):
       return self.heapList[0]
 
-    def remove(self, data):
-        #TODO: implement remove
-        pass
-
     def poll(self):
-        tempRoot = self.heapList[0]
-        self.heapList[0] = self.heapList.pop()
-        self.size -= 1
-        self.heapifyDown()
+        tempRoot = self.heapList[0] # save the root in a temp variable
+        self.heapList[0] = self.heapList.pop() # replace the root with the last element in the heap
+        self.size -= 1 # decrement the size of the heap
+        self.heapifyDown() # heapify the heap down
         return tempRoot
 
     def insert(self, data):
@@ -37,7 +33,7 @@ class MaxHeap:
         parentIndex = self.getParent(currIndex)
         if self.heapList[currIndex] > self.heapList[parentIndex]:
           self.heapList[currIndex], self.heapList[parentIndex] = self.heapList[parentIndex], self.heapList[currIndex]
-          currIndex = parentIndex
+        currIndex = parentIndex
 
     def heapifyDown(self):
       currIndex = 0
@@ -46,8 +42,10 @@ class MaxHeap:
           rightChildIndex = self.getRightChild(currIndex)
           # need to check is leftChildIndex and rightChildIndex are less than size because the right and child index for the last level in the heap will be out of bounds
           if leftChildIndex < self.size and self.heapList[currIndex] < self.heapList[leftChildIndex]:
+              # first swap the current index with the left child
               self.heapList[currIndex], self.heapList[leftChildIndex] = self.heapList[leftChildIndex], self.heapList[currIndex]
           if rightChildIndex < self.size and  self.heapList[currIndex] < self.heapList[rightChildIndex]:
+              # then swap the current index (current index can also be the leftchild value) with the right child
               self.heapList[currIndex], self.heapList[rightChildIndex] = self.heapList[rightChildIndex], self.heapList[currIndex]
           currIndex += 1
 
