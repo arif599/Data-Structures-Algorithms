@@ -1,26 +1,26 @@
-def binarySearchIterative(arr, val):
+def binarySearchIterative(arr, target):
     start = 0 # Start index
     end = len(arr) - 1 # End index
     while start <= end: # While start index is less than or equal to end index
         mid = (start + end) // 2 # Find mid
-        if arr[mid] == val: # Found
+        if arr[mid] == target: # Found
             return mid
-        elif arr[mid] < val: # Search right
+        elif arr[mid] < target: # Search right
             start = mid + 1
         else: # Search left
             end = mid - 1
     return -1 # Not found
 
-def binarySeachRecursice(arr, val, low=0, high=0):
+def binarySeachRecursice(arr, target, low=0, high=0):
     if low > high: # Base case
         return -1 # Not found
     mid = (low + high) // 2 # Find mid
-    if arr[mid] == val: # Found
+    if arr[mid] == target: # Found
         return mid
-    elif arr[mid] < val: # Search right
-        return binarySeachRecursice(arr, val, mid + 1, high) # Recursive call on the right half
+    elif arr[mid] < target: # Search right
+        return binarySeachRecursice(arr, target, mid + 1, high) # Recursive call on the right half
     else: # Search left
-        return binarySeachRecursice(arr, val, low, mid - 1) # Recursive call on the left half
+        return binarySeachRecursice(arr, target, low, mid - 1) # Recursive call on the left half
 
 if __name__ == "__main__":
     # driver code
