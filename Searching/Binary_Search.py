@@ -1,4 +1,7 @@
 def binarySearchIterative(arr, target):
+    # time complexity: O(log(n))
+    # space complexity: O(1)
+
     start = 0 # Start index
     end = len(arr) - 1 # End index
     while start <= end: # While start index is less than or equal to end index
@@ -12,6 +15,9 @@ def binarySearchIterative(arr, target):
     return -1 # Not found
 
 def binarySeachRecursice(arr, target, low=0, high=0):
+    # time complexity: O(log(n))
+    # space complexity: O(log(n))
+    
     if low > high: # Base case
         return -1 # Not found
     mid = (low + high) // 2 # Find mid
